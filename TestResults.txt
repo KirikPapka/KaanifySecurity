@@ -1,0 +1,61 @@
+[1/4] Roundtrip
+[01] tag_ok=True  equal=True  ct_len=65536
+[02] tag_ok=True  equal=True  ct_len=65536
+[03] tag_ok=True  equal=True  ct_len=65536
+[04] tag_ok=True  equal=True  ct_len=65536
+[05] tag_ok=True  equal=True  ct_len=65536
+[06] tag_ok=True  equal=True  ct_len=65536
+[07] tag_ok=True  equal=True  ct_len=65536
+[08] tag_ok=True  equal=True  ct_len=65536
+[09] tag_ok=True  equal=True  ct_len=65536
+[10] tag_ok=True  equal=True  ct_len=65536
+RESULT: PASS
+
+Interpretation:
+1. Encryption → decryption works perfectly
+2. Tag authentication works
+3. Ciphertext size correct
+
+[2/4] Avalanche
+Avalanche (plaintext bit flip): mean=0.2720, std=0.1353, trials=50
+Avalanche (key bit flip): mean=0.5001, std=0.0006, trials=50
+
+Interpretation:
+1. Excellent confusion w.r.t. key
+2. Plaintext diffusion 0.27 below 0.5 (still low)
+
+[3/4] Per-round diffusion
+Round, Differing bytes, Differing bits
+0, 1, 1
+1, 16, 56
+2, 256, 1021
+3, 3581, 14449
+4, 15976, 64280
+5, 16297, 65662
+6, 16327, 65837
+7, 16309, 65238
+8, 16315, 65350
+9, 16320, 65439
+10, 16308, 65451
+11, 16340, 65555
+12, 16325, 65676
+13, 16319, 65657
+14, 16310, 65768
+15, 16345, 65477
+16, 16321, 65359
+
+Interpretation:
+1. Full-state diffusion by round 4 — really strong
+
+[4/4] Keystream randomness (this one takes a bit)
+Keystream bytes: 4,194,304
+Shannon entropy (bits/byte): 8.0000  (ideal ≈ 8.0)
+Monobit fraction of 1s:       0.5000  (ideal ≈ 0.5)
+Chi-square (256 bins):        204.77  (lower is better; df=255)
+Runs (bit level):             16775092
+Lag-1 autocorrelation:        -0.00017  (ideal ≈ 0.0)
+
+Interpretation:
+1. Keystream statistically indistinguishable from random
+2. No bias detected
+3. Excellent base pseudorandomness

@@ -1,0 +1,25 @@
+# P cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# VE
+venv/
+.env/
+
+# Mac sys
+.DS_Store
+
+
+out_*/
+downloads/
+*.log
+
+# Encryption keys and sensitive data
+KaanifySecurity/keys/shared_key.bin
+*.bin
+*.hex
+
+
+*.icloud
